@@ -50,11 +50,12 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(yaricap) {
+  return 2*pi*yaricap;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
+console.log(CemberinCevresi(5));
 
 /* 	GÖREV 2:  
 - CemberinAlani fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -64,8 +65,8 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(yaricap, pi) {
+  return pi*yaricap*yaricap;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -98,28 +99,52 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
+for (let i = 0; i < sayilar.length; i++) {
+  const sayi = parseFloat(sayilar[i]);
+  if (sayi > enbuyuk) enbuyuk = sayi;
+  if (sayi < enkucuk) enkucuk = sayi;
+}
 
-/* kodlar buraya */
 
 // 3b çözümü:
-
+const uceBolunenler = [];
+sayilar.forEach((sayi) => {
+  const num = parseFloat(sayi);
+  if (num % 3 === 0) {
+    uceBolunenler.push(num);
+  }
+});
 /* kodlar buraya */
 
 // 3c çözümü:
-
+ucebolunenlerintoplami = uceBolunenler.reduce((toplam, sayi) => toplam + sayi, 0);
 /* kodlar buraya */
 
 // 3d çözümü
-
+besyuzdenkucuksayilar = sayilar.filter((sayi) => parseFloat(sayi) < 500);
 /* kodlar buraya */
 
 // 3e çözümü
-
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => parseFloat(a) - parseFloat(b));
 /* kodlar buraya */
 
 // 3f çözümü
 
-/* kodlar buraya */
+tekraredensayilar = [];
+const sayiSayaci = {};
+
+
+sayilar.forEach((sayi) => {
+  const num = parseFloat(sayi);
+  sayiSayaci[num] = (sayiSayaci[num] || 0) + 1;
+});
+
+
+for (const [sayi, tekrarSayisi] of Object.entries(sayiSayaci)) {
+  if (tekrarSayisi > 1) {
+    tekraredensayilar.push(`${sayi} sayısı ${tekrarSayisi} kere tekrar edilmiştir`);
+  }
+}
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
